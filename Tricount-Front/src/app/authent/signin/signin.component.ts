@@ -16,27 +16,27 @@ export class SigninComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.initForm();
+    // this.initForm();
   }
-
-  initForm(){
-    this.signinForm = this.formBuilder.group({
-      email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)]]
-    });
-  }
-
-  onSubmit(){
-    const email = this.signinForm.get('email').value;
-    const password = this.signinForm.get('password').value;
-
-    this.authService.signInUser(email, password).then(
-      () => {
-        this.router.navigate(['/books'])
-      },
-      (error) => {
-        this.errorMessage = error;
-      }
-    );
-  }
+  //
+  // initForm(){
+  //   this.signinForm = this.formBuilder.group({
+  //     email: ['', [Validators.email, Validators.required]],
+  //     password: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)]]
+  //   });
+  // }
+  //
+  // onSubmit(){
+  //   const email = this.signinForm.get('email').value;
+  //   const password = this.signinForm.get('password').value;
+  //
+  //   this.authService.signInUser(email, password).then(
+  //     () => {
+  //       this.router.navigate(['/books'])
+  //     },
+  //     (error) => {
+  //       this.errorMessage = error;
+  //     }
+  //   );
+  // }
 }

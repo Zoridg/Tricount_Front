@@ -5,6 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './authent/signup/signup.component';
 import { SigninComponent } from './authent/signin/signin.component';
+import {AuthService} from "./services/auth.service";
+import {RouterModule, Routes} from "@angular/router";
+
+const appRoutes: Routes = [
+  {path: 'auth/signup', component: SignupComponent},
+  {path: 'auth/signin', component: SigninComponent}];
 
 @NgModule({
   declarations: [
@@ -14,9 +20,12 @@ import { SigninComponent } from './authent/signin/signin.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
